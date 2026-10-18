@@ -1,0 +1,67 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.list {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 7px;                 
+    min-height: 100vh;  
+}
+
+.list img {
+    width: 120px;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid #444;
+}
+
+.list {
+    transform-style: preserve-3d;
+    transform: perspective(750px);
+}
+
+.list .item {
+    transition: .7s;
+    filter: brightness(0);
+}
+
+.list .item:hover {
+    transform: translateZ(100px);
+    filter: brightness(1) grayscale(0) blur(0px);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.list .item:hover + * {
+    transform: translateZ(100px) rotateY(40deg);
+    filter: brightness(0.6) grayscale(1) blur(1px);
+}
+
+.list .item:hover + * + * {
+    transform: translateZ(50px) rotateY(20deg);
+    filter: brightness(0.4) grayscale(1) blur(1px);
+}
+
+.list .item:hover + * + * + * {
+    transform: translateZ(15px) rotateY(10deg);
+    filter: brightness(0.2) grayscale(1) blur(1px);
+}
+
+.list .item:has(+ *:hover) {
+    transform: translateZ(100px) rotateY(-40deg);
+    filter: brightness(0.6) grayscale(1) blur(1px);
+}
+
+.list .item:has(+ * + *:hover) {
+    transform: translateZ(50px) rotateY(-20deg);
+    filter: brightness(0.4) grayscale(1) blur(1px);
+}
+
+.list .item:has(+ * + * + *:hover) {
+    transform: translateZ(15px) rotateY(-10deg);
+    filter: brightness(0.2) grayscale(1) blur(1px);
+}
